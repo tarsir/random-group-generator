@@ -2,12 +2,21 @@
     <form class="form-inline">
       <div class="form-group">
         <div class="input-group">
+          <label for="itemInputField">New Item</label>
           <input type="text" class="form-control" id="itemInputField" ng-model="inputItem">
+        </div>
+        <div class="input-group">
+          <label for="groupSizeField">Group Size</label>
+          <input type="text" class="form-control" id="groupSizeField" ng-model="groupSize">
         </div>
       </div>
       <button type="submit" class="btn btn-primary" ng-click="addItem(inputItem)">Add Item</button>
+      <button type="submit" class="btn btn-primary" ng-click="makeGroups(groupSize)">Generate Groups</button>
     </form>
     <ul>
       <li ng-repeat="item in items">{{item}} | <a href="#" ng-click="removeItem($index)">X</a></li>
+    </ul>
+    <ul>
+      <li ng-repeat="item in shuffled">{{item}}</li>
     </ul>
 </div>
