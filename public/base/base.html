@@ -1,6 +1,13 @@
 <div class="base-container">
-    hi everyone
-    <!-- <ul> -->
-    <!--     <li ng-repeat="item in items">{{item}}</li> -->
-    <!-- </ul> -->
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" id="itemInputField" ng-model="inputItem">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" ng-click="addItem(inputItem)">Add Item</button>
+    </form>
+    <ul>
+      <li ng-repeat="item in items">{{item}} | <a href="#" ng-click="removeItem($index)">X</a></li>
+    </ul>
 </div>
