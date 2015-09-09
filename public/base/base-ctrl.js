@@ -23,6 +23,7 @@ app.controller('BaseCtrl',
  ['$scope', '$window', 
      function($scope, $window) {
         $scope.items = [];
+        $scope.groups = [];
         $scope.shuffled = [];
 
         $scope.addItem = function(item) {
@@ -36,6 +37,14 @@ app.controller('BaseCtrl',
 
         $scope.makeGroups = function(groupSize) {
           $scope.shuffled = $scope.items.slice(0);
+          $scope.groups = [];
           shuffle($scope.shuffled);
+          var currentPos = 0;
+          var groupSizeInt = parseInt($scope.groupSize, 10);
+          while (currentPos < $scope.shuffled.length) {
+            $scope.groups.push($scope.shuffled.slice(currentPos, currentPos + groupSizeInt));
+            currentPos += groupSizeInt;
+            console.log(currentPos);
+          }
         };
     }]);
