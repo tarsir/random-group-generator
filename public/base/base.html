@@ -1,22 +1,33 @@
 <div class="base-container">
-    <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <label for="itemInputField">New Item</label>
-          <input type="text" class="form-control" id="itemInputField" ng-model="inputItem">
-        </div>
-        <div class="input-group">
-          <label for="groupSizeField">Group Size</label>
-          <input type="text" class="form-control" id="groupSizeField" ng-model="groupSize">
-        </div>
+  <form class="form-inline col-sm-12">
+    <div class="form-group col-sm-3">
+      <div class="col-sm-12">
+        <label class="col-sm-3" for="itemInputField">New Item</label>
+        <input type="text" class="form-control" id="itemInputField" ng-model="inputItem">
+        <button type="button" class="btn btn-default" ng-click="addItem(inputItem)">Add Item</button>
       </div>
-      <button type="submit" class="btn btn-primary" ng-click="addItem(inputItem)">Add Item</button>
-      <button type="submit" class="btn btn-primary" ng-click="makeGroups(groupSize)">Generate Groups</button>
-    </form>
-    <ul>
-      <li ng-repeat="item in items">{{item}} | <a href="#" ng-click="removeItem($index)">X</a></li>
-    </ul>
-    <ul>
-      <li ng-repeat="item in groups">{{item}}</li>
-    </ul>
+    </div>
+    <div class="form-group col-sm-4">
+      <div class="col-sm-12">
+        <label class="col-sm-3" for="groupSizeField">Group Size</label>
+        <input type="text" class="form-control col-sm-4" id="groupSizeField" ng-model="groupSize">
+        <button type="button" class="btn btn-default col-sm-" ng-click="makeGroups(groupSize)">Make Groups</button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-sm-3">
+      <ul>
+        <li ng-repeat="item in items track by $index">{{item}} | <a href="#" ng-click="removeItem($index)">X</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-3">
+      <ul ng-repeat="randomGroup in groups track by $index" class="list-group">
+        <li class="list-group-item">
+          <div class="panel-title">Group {{$index+1}}</div>
+        </li>
+        <li ng-repeat="item in randomGroup track by $index" class="list-group-item">{{item}}</li>
+      </ul>
+    </div>
+  </div>
 </div>
